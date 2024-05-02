@@ -17,8 +17,7 @@ jobs:
         run: |
           mkdir input
           curl -o textures.zip $TEXTURES
-          ls *
-          unzip textures.zip -d input
+          unzip textures.zip -d /input
           bash render.sh input/ output/
       - uses: actions/upload-artifact@v4
         with:
