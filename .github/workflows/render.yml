@@ -15,10 +15,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run
         run: |
+          mkdir input
           curl -o input/textures.zip $TEXTURES
           unzip input/textures.zip
           bash render.sh input/ output/
       - uses: actions/upload-artifact@v4
         with:
-          name: my-artifact
-          path: output
+          name: Icon
+          path: output/
