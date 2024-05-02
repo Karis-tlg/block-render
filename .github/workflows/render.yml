@@ -16,7 +16,7 @@ jobs:
       - name: Run
         run: |
           mkdir input
-          curl -o input/textures.zip $TEXTURES
+          curl -o textures.zip $TEXTURES
           ls *
           unzip textures.zip -d input
           bash render.sh input/ output/
