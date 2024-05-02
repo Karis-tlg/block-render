@@ -1,1 +1,8 @@
-
+name: Render Block
+on: 
+  workflow_dispatch:
+    inputs:
+      texture_url:
+        type: string
+        required: true
+      
