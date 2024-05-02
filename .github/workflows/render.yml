@@ -2,7 +2,7 @@ name: Render Block
 on: 
   workflow_dispatch:
     inputs:
-      texture_url:
+      textures_url:
         type: string
         required: true
       
@@ -10,9 +10,15 @@ jobs:
   render:
     runs-on: ubuntu-latest
     env:
-      PACK: ${{ inputs.resources_pack_url }}
+      TEXTURES: ${{ inputs.textures_url }}
     steps:
       - uses: actions/checkout@v4
       - name: Run
         run: |
+          curl -o input/textures.zip $TEXTURES
+          unzip input/textures.zip
           bash render.sh input/ output/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: output
